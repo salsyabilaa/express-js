@@ -1,14 +1,16 @@
-const db = require('../database/db.js');
-const store = (body, callback)=>{
-    console.log(body)
+const db  = require('../database/db');
+
+const store = (body, callback) => {
     db.query({
-        sql: 'INSERT INTO inventory SET ?',
+        sql: 'INSERT INTO tb_inventory SET ?',
         timeout: 4000,
-        values: {...body},
-    }, (err, result)=> {
-        return callback(err, result);
+        values: { ... body},
+    }, (err, result) => {
+        console.log(result);
+       return callback(err, result);
     });
 };
-module.exports={
+
+module.exports = {
     store,
 };
